@@ -1,5 +1,7 @@
 package org.MyNote;
 
+import java.time.LocalDateTime;
+
 public class Main {
     public static void main(String[] args) {
         // Создаем реализацию NoteRepository и сервис NoteServiceImpl
@@ -10,11 +12,13 @@ public class Main {
         Note note1 = new Note(1, "Заметка 1", "Dei voluntas");
         Note note2 = new Note(2, "Заметка 2", "Honor et virtus");
         Note note3 = new Note(3, "Заметка 3", "Patientia et perseverantia");
+        Note note4 = new Note(4, "бля", "нахуй");
 
 
         noteService.addNote(note1);
         noteService.addNote(note2);
         noteService.addNote(note3);
+        noteService.addNote(note4);
 
 
         // Выводим список заметок
