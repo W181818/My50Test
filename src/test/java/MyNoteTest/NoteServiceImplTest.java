@@ -28,14 +28,16 @@ public class NoteServiceImplTest {
     @Captor
     private ArgumentCaptor<Integer> idCaptor;
 
+
     @BeforeAll
     static void init() {
-        System.out.println("BeforeAll : ");
+        System.out.println("Tests completed");
 
     }
 
     @BeforeEach
     public void setUp() {
+        System.out.println("Test "+this+" started" );
         noteRepository = mock(NoteRepository.class);
         noteService = new NoteServiceImpl(noteRepository);
         noteCaptor = ArgumentCaptor.forClass(Note.class);
@@ -44,6 +46,7 @@ public class NoteServiceImplTest {
 
     @AfterEach
     public void tearDown() {
+        System.out.println("Test " + this + " completed");
         reset(noteRepository);
     }
 
@@ -52,6 +55,7 @@ public class NoteServiceImplTest {
      */
     @Test
     public void addNoteTest() {
+
         Note note = new Note(1, "Title", "Content");
         noteService.addNote(note);
 
@@ -66,6 +70,7 @@ public class NoteServiceImplTest {
      */
     @Test
     public void addNoteWithEmptyTitleTest() {
+
         Note note = new Note(1, "", "Content");
 
         assertThatThrownBy(() -> noteService.addNote(note))
@@ -665,9 +670,9 @@ public class NoteServiceImplTest {
         inOrder.verify(noteRepository).addNote(note2);
     }
 
-    /**
-     * 49. ТЕст проверки запрета на добавление некоторых слов
-     */
+//    /**
+//     * 49. ТЕст проверки запрета на добавление некоторых слов
+//     */
 //    @Test
 //    public void addNoteWithRestrictedWordsTest() {
 //            List<String> restrictedWords = Arrays.asList("бля", "пиздец", "нахуй");
@@ -705,7 +710,7 @@ public class NoteServiceImplTest {
 
     @AfterAll
     static void closeConnectPool() {
-        System.out.println("AfterAll: ");
+        System.out.println("All tests completed");
 
     }
 }
