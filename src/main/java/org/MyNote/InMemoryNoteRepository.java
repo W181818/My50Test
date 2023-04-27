@@ -2,7 +2,7 @@ package org.MyNote;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
-
+/**Класс InMemoryNoteRepository используется для хранения заметок в памяти*/
 public class InMemoryNoteRepository implements NoteRepository {
     private final List<Note> notes = new ArrayList<>();
 
